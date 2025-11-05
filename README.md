@@ -123,8 +123,8 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 ## 👨‍💻 Author
 
 **Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+- GitHub: [@yourusername](https://github.com/JAGADISHSUNILPEDNEKAR)
+- LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/jagadish-sunil-p-117210311/)
 
 ## 🙏 Acknowledgments
 
