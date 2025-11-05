@@ -79,11 +79,11 @@ export const formatPrice = (price) => {
   if (price === null || price === undefined) return 'N/A';
   
   if (price < 0.01) {
-    return `$${price.toFixed(6)}`;
+    return `${price.toFixed(6)}`;
   } else if (price < 1) {
-    return `$${price.toFixed(4)}`;
+    return `${price.toFixed(4)}`;
   } else {
-    return `$${price.toLocaleString('en-US', {
+    return `${price.toLocaleString('en-US', {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
     })}`;
