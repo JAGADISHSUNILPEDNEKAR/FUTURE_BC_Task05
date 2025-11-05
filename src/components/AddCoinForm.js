@@ -34,27 +34,34 @@ const AddCoinForm = ({ onAddCoin }) => {
     setIsExpanded(false);
   };
 
+  const handleQuickSelect = (coin) => {
+    setCoinId(coin);
+    // Scroll to the coin ID input
+    document.getElementById('coinId')?.focus();
+  };
+
   return (
     <div className="add-coin-section">
       <button 
         className="toggle-form-btn"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        {isExpanded ? '− Hide Form' : '+ Add New Coin'}
+        {isExpanded ? '✕ Close Form' : '+ Add New Cryptocurrency'}
       </button>
 
       {isExpanded && (
         <form onSubmit={handleSubmit} className="add-coin-form">
           <div className="form-grid">
             <div className="form-group">
-              <label htmlFor="coinId">Coin ID</label>
+              <label htmlFor="coinId">Cryptocurrency ID</label>
               <input
                 type="text"
                 id="coinId"
                 value={coinId}
                 onChange={(e) => setCoinId(e.target.value)}
-                placeholder="e.g., bitcoin, ethereum"
+                placeholder="bitcoin, ethereum, etc."
                 className="form-input"
+                autoComplete="off"
               />
               <small className="form-hint">Use CoinGecko coin ID (lowercase)</small>
             </div>
@@ -66,15 +73,16 @@ const AddCoinForm = ({ onAddCoin }) => {
                 id="amount"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                placeholder="0.00"
+                placeholder="0.0000"
                 step="any"
                 min="0"
                 className="form-input"
               />
+              <small className="form-hint">How many coins do you own?</small>
             </div>
 
             <div className="form-group">
-              <label htmlFor="buyPrice">Buy Price (USD)</label>
+              <label htmlFor="buyPrice">Purchase Price (USD)</label>
               <input
                 type="number"
                 id="buyPrice"
@@ -85,23 +93,25 @@ const AddCoinForm = ({ onAddCoin }) => {
                 min="0"
                 className="form-input"
               />
+              <small className="form-hint">Price per coin when purchased</small>
             </div>
           </div>
 
-          {error && <div className="error-message">{error}</div>}
+          {error && <div className="error-message">⚠️ {error}</div>}
 
           <button type="submit" className="submit-btn">
-            Add to Portfolio
+            ✅ Add to Portfolio
           </button>
 
           <div className="popular-coins">
-            <p>Popular coins:</p>
+            <p>Quick Select Popular Coins:</p>
             <div className="coin-chips">
-              <span onClick={() => setCoinId('bitcoin')}>Bitcoin</span>
-              <span onClick={() => setCoinId('ethereum')}>Ethereum</span>
-              <span onClick={() => setCoinId('cardano')}>Cardano</span>
-              <span onClick={() => setCoinId('solana')}>Solana</span>
-              <span onClick={() => setCoinId('polkadot')}>Polkadot</span>
+              <span onClick={() => handleQuickSelect('bitcoin')}>₿ Bitcoin</span>
+              <span onClick={() => handleQuickSelect('ethereum')}>Ξ Ethereum</span>
+              <span onClick={() => handleQuickSelect('cardano')}>₳ Cardano</span>
+              <span onClick={() => handleQuickSelect('solana')}>◎ Solana</span>
+              <span onClick={() => handleQuickSelect('polkadot')}>● Polkadot</span>
+              <span onClick={() => handleQuickSelect('ripple')}>✕ Ripple</span>
             </div>
           </div>
         </form>

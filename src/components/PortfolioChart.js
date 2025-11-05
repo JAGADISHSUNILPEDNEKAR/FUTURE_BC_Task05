@@ -23,13 +23,13 @@ const PortfolioChart = ({ portfolio }) => {
   }).sort((a, b) => b.value - a.value);
 
   const colors = [
-    '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', 
-    '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2'
+    '#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', 
+    '#10b981', '#06b6d4', '#f59e0b', '#3b82f6'
   ];
 
   return (
     <div className="portfolio-chart">
-      <h2>Portfolio Distribution</h2>
+      <h2>📊 Portfolio Distribution</h2>
       <div className="chart-container">
         <div className="bar-chart">
           {chartData.map((coin, index) => (
@@ -37,17 +37,18 @@ const PortfolioChart = ({ portfolio }) => {
               <div 
                 className="chart-bar"
                 style={{
-                  width: `${coin.percentage}%`,
-                  backgroundColor: colors[index % colors.length]
+                  width: `${Math.max(parseFloat(coin.percentage), 5)}%`,
+                  backgroundColor: colors[index % colors.length],
+                  minWidth: '150px'
                 }}
               >
                 <span className="bar-label">
-                  {coin.coinId.toUpperCase()} ({coin.percentage}%)
+                  {coin.coinId.toUpperCase()} • {coin.percentage}%
                 </span>
               </div>
               <div className="bar-info">
-                <span className="coin-name">{coin.coinId}</span>
-                <span className="coin-value">{formatPrice(coin.value)}</span>
+                <span className="coin-name">{coin.coinId.charAt(0).toUpperCase() + coin.coinId.slice(1)}</span>
+                <span className="coin-value">${formatPrice(coin.value)}</span>
               </div>
             </div>
           ))}
@@ -66,6 +67,17 @@ const PortfolioChart = ({ portfolio }) => {
               </span>
             </div>
           ))}
+          {chartData.length > 5 && (
+            <div className="legend-item" style={{ opacity: 0.6 }}>
+              <span 
+                className="legend-color"
+                style={{ backgroundColor: '#64748b' }}
+              ></span>
+              <span className="legend-label">
+                +{chartData.length - 5} more
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </div>
