@@ -75,10 +75,10 @@ This project uses the [CoinGecko API](https://www.coingecko.com/en/api) (free ti
 
 ## 📸 Screenshots
 
-![Portfolio Dashboard](./screenshots/demo-1.png)
+![Portfolio Dashboard](./screenshots/demo-2.png)
 *Main dashboard with portfolio overview*
 
-![Add Coin Form](./screenshots/demo-2.png)
+![Add Coin Form](./screenshots/demo-1.png)
 *Add new cryptocurrency to your portfolio*
 
 ## 🧠 Skills Demonstrated
