@@ -65,7 +65,7 @@ function App() {
       saveToLocalStorage(updatedPortfolio);
       setLastUpdated(new Date().toLocaleTimeString());
     } catch (err) {
-      setError('Failed to fetch prices. Please check coin IDs and try again.');
+      setError('Failed to fetch prices. Please check your connection and coin IDs.');
       console.error(err);
     } finally {
       setLoading(false);
@@ -82,7 +82,7 @@ function App() {
       const priceData = await fetchCryptoPrices([newCoin.coinId]);
       
       if (!priceData[newCoin.coinId]) {
-        setError(`Coin "${newCoin.coinId}" not found. Please check the coin ID.`);
+        setError(`Coin "${newCoin.coinId}" not found. Please verify the coin ID on CoinGecko.`);
         setLoading(false);
         return;
       }
@@ -152,7 +152,7 @@ function App() {
             Powered by <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer">CoinGecko API</a>
           </p>
           <p className="footer-note">
-            💡 Tip: Prices update automatically every 60 seconds
+            💡 Prices update automatically every 60 seconds
           </p>
         </footer>
       </div>
